@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package format="2">
+  <!-- <name> - The name of the package. -->
+  <name>dummy</name>
+  <!-- - The version number of the package (required to be 3 dot-separated integers). -->
+  <version>0.0.1</version>
+  <!-- <description> - A description of the package contents. -->
+  <description>This package provides foo capability.</description>
+  <!-- <maintainer> - The name of the person(s) that is/are maintaining the package. -->
+  <maintainer email="dummy@main">Otto man</maintainer>
+  <!-- <author> - The author(s) of the package. -->
+  <author>Author</author>
+  <!-- <url> - Even though the URL might not be used for the purpose we are using,
+    we are extending its usage two things:
+    - When in customer, or in a running movai project, we want to know where was a package originated from, we simply use the URL for it.
+    - When we have a project that contains multiple components, and we want to take advantage of deploying the whole project from one environment to the other, we use the URL to find the release pipelines (orchestrations) of its dependencies. -->
+  <url>https://github.com/MOV-AI/repository-template-ros-component</url>
+
+  <!-- <license> The software license(s) (e.g. GPL, BSD, ASL) under which the code is released. -->
+  <license>BSD</license>
+
+  <!-- <buildtool_depend> specify build system tools which this package needs to build itself. -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- <depend> specifies that a dependency is a build, export, and execution dependency. This is the most commonly used dependency tag. -->
+  <!-- <depend>package</depend> -->
+  <!-- <build_depend> specify which packages are needed to build this package. -->
+  <!-- <build_depend>package</build_depend> -->
+  <!-- <exec_depend> specify which packages are needed to run code in this package. -->
+  <!-- <exec_depend>package</exec_depend> -->
+  <!-- <test_depend> specify only additional dependencies for unit tests. -->
+  <!-- <test_depend>package</test_depend> -->
+  <!-- <doc_depend> specify documentation tools which this package needs to generate documentation. -->
+  <!-- <doc_depend>package</doc_depend> -->
+  <export>
+      <build_version>0</build_version>
+  </export>
+  <!-- TODO: [DP-505] add m-e-t-a-p-a-c-k-a-g-e tag as comment and description of the same. -->
+
+</package>
