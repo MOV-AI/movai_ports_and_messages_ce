@@ -1,2 +1,11 @@
+# Callback
+Callback:place_holder
 
-Node:laser_merge
+# Messages
+Message:movai_msgs
+
+# Ports
+Ports:AioHttp
+Ports:MovAI
+Ports:Redis
+Ports:ROS1

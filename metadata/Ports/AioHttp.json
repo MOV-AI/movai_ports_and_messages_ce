@@ -1,0 +1,23 @@
+{
+    "Ports": {
+        "AioHttp/Websocket": {
+            "Label": "AioHttp/Websocket",
+            "Data": {
+                "Package": "movai_msgs",
+                "Message": "Websocket"
+            },
+            "In": {
+                "data_in": {
+                    "Transport": "AioHttp",
+                    "Protocol": "Websocket",
+                    "Message": "&",
+                    "Callback": "place_holder",
+                    "Parameter": {
+                        "Endpoint": "websocket"
+                    },
+                    "LinkEnabled": false
+                }
+            }
+        }
+    }
+}
