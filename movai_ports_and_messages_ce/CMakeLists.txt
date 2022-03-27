@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(dummy)
+project(movai_ports_and_messages_ce)
 
 #############
 ## Install ##

@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <package format="2">
   <!-- <name> - The name of the package. -->
-  <name>dummy</name>
+  <name>movai_ports_and_messages_ce</name>
   <!-- - The version number of the package (required to be 3 dot-separated integers). -->
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <!-- <description> - A description of the package contents. -->
-  <description>This package provides foo capability.</description>
+  <description>This package provides ports information and movai messages for the callbacks</description>
   <!-- <maintainer> - The name of the person(s) that is/are maintaining the package. -->
-  <maintainer email="dummy@main">Otto man</maintainer>
+  <maintainer email="mithun@mov.ai">Mithun Kinarullathil</maintainer>
   <!-- <author> - The author(s) of the package. -->
-  <author>Author</author>
+  <author>Mithun Kinarullathil</author>
   <!-- <url> - Even though the URL might not be used for the purpose we are using,
     we are extending its usage two things:
     - When in customer, or in a running movai project, we want to know where was a package originated from, we simply use the URL for it.
     - When we have a project that contains multiple components, and we want to take advantage of deploying the whole project from one environment to the other, we use the URL to find the release pipelines (orchestrations) of its dependencies. -->
-  <url>https://github.com/MOV-AI/repository-template-ros-component</url>
+  <url>https://github.com/MOV-AI/movai_ports_and_messages_ce</url>
 
   <!-- <license> The software license(s) (e.g. GPL, BSD, ASL) under which the code is released. -->
-  <license>BSD</license>
+  <license>Mov.AI License version 1.0</license>
 
   <!-- <buildtool_depend> specify build system tools which this package needs to build itself. -->
   <buildtool_depend>catkin</buildtool_depend>
