@@ -1,82 +1,93 @@
-# repository-template-ros-component
-
-
-## Target ROS Distributions
-
-When you instantiate your repository, one of the first questions you should be doing yourself is, "to what ROS distribution am I contributing to?".
-The pipelines provided by this repository template will support you in whatever you decide as you will parameterize the distributions to which you want the package to be installed into.
-How ?
-
-Go to your pipeline folder (.github/workflows/) and update your pipelines that build and package ROS components (You do not need to adapt the release pipeline, as it simply publish generated artifacts).
-Pipelines that you need to change:
-- TestOnPR.yml
-- DeployOnMergeMain.yml
-
-In them you will find the input **ros_distro** where you will specify the target ROS distros.
-
-![Screenshot from 2021-12-14 10-32-51](https://user-images.githubusercontent.com/84720623/146040977-773efcf5-e007-4d9f-89e2-55caf1b51013.png)
-
-If you specify multiple distributions, the pipeline will build for each one of the specified distros the packages in your project.
-
-## R&D Guidelines in terms of ROS distribution 
-
-(if you are seing this after Mov.ai 3.0 please contact your captains as this might be outdated)
-
-So this has to take in consideration the distribution our platform is currently supporting, and the migration to noetic (next supported distro).
-If your ROS component:
-
-- Still going for **2.2**, you must target for melodic and if by default it passes in noetic, you have a plus there.
-- Not going to be included in **2.2**, you only target noetic.
-- Currently being migrated to the next distro, you have 2 options.
-  - Code supports both distros 
-  - Split into different branches as the code differs for each ROS distro (Have main, and main-noetic branches).
-
-
-### Branching model for a smooth transition of ros distro
-
-
-![Screenshot from 2021-12-16 15-27-46](https://user-images.githubusercontent.com/84720623/146399979-5506e9cb-d210-4047-8b53-8a4d1c04e3ee.png)
-
-
-Consider the 2.2 the current release you are working towards, and it only supports melodic, and after that the platform switching to projects on noetic.
-
-## [DELETE ME ON INSTANTIATION] Template Description
-
-Template to be used if you are going to create a ROS component.
+# movai-ports-and-messages-ce
 
 This repository will provide you the following:
-- Dummy component structure, even though you can have a multi project as long as you follow the ROS project structure, so we dont break the capabilities of rosdep installations.
-- Project structure for your source. tests and CI/CD pipelines
-- CI/CD that builds, validates and deploys your component to Nexus. The versioning and branching model follows the universal Mov.AI development guidelines.
+- A set of ports and messages metadata supported on the movai-flow&trade;
 
-To adapt the project to your needs, follow the TODOs placed throughout the project source and tests.
+## Release Status
+| Package         | Noetic |
+| :---:           | :---:  |
+| movai_ports_and_messages_ce      | [![Deploy - To Nexus On Github Release](https://github.com/MOV-AI/movai_ports_and_messages_ce/actions/workflows/DeployOnGitRelease.yml/badge.svg)](https://github.com/MOV-AI/movai_ports_and_messages_ce/actions/workflows/DeployOnGitRelease.yml)
 
+## Deploy Status (branch → main)
+| Package         | Noetic |
+| :---:           | :---:  |
+| movai_ports_and_messages_ce      | [![Deploy - On branch main/release Push](https://github.com/MOV-AI/movai_ports_and_messages_ce/actions/workflows/DeployOnMergeMain.yml/badge.svg)](https://github.com/MOV-AI/movai_ports_and_messages_ce/actions/workflows/DeployOnMergeMain.yml)
 
+## Continuous Integration Status
 
-## Versioning and branching
-
-The branches and meanings:
-- branches derived from dev (feature/ or bugfix/): Its where developements should be introduced to. Its lifetime should be as should as the developments time. 
-- dev: The most recent version of the code should be here as its the source of the feature branches. The purpose of this branch is the first point of integration from all features.
-- main/ main*: The branch where you will find the most stable version of the component. Its a "deploy" of dev version to an internal release. This deploy must create an artifact that is avaiable to all other teams to use it and provide feedback to it.
-- branches derived from main (hotfix/): Its where your hotfixes should be implemented. Do not forget to propagate your hotfixes to the other release versions and the main development release line.
-![Screenshot from 2021-10-14 16-29-53](https://user-images.githubusercontent.com/84720623/137349613-368ea252-3c05-460c-8eef-20bb6c4b94f4.png)
-
-In terms of versioning, we basically use semantic versioning but with a 4th digit, automatic incremented by our CI systems:
-**{Major}.{Minor}.{Patch}-{buildid}**
-
-If your component has a straight relation with a centralized system, we suggest keeping a relation with it in terms of major,minor and patch to ease support.
-
-## Testing
+| Package         | Noetic |
+| :---:           | :---:  |
+| movai_ports_and_messages_ce  | [![CI - On main/dev/release branches](https://github.com/MOV-AI/movai_ports_and_messages_ce/actions/workflows/TestOnPR.yml/badge.svg)](https://github.com/MOV-AI/movai_ports_and_messages_ce/actions/workflows/TestOnPR.yml)
 
 
+# Usage:
 
-## Component packaging
-The ROS component is packaged through the framework **mobros**.
+## Installation
+- Get the latest released package from [releases page](https://github.com/MOV-AI/movai_ports_and_messages_ce/releases)
+- Install the package using apt
+```
+sudo apt install ./ros-noetic-movai-ports-and-messages-ce_1.0.0-x_all.deb
+```
 
-mobros pack
+## How to use
+- Once installed, please restart your spwner container/
+- The ports will appear on your node template/IO Configuration tab, when adding a new port.
+- The movai_msg list will appear on the callback in the Message section in the Callback Details Menu.
+- The information regarding each message and port are given in the next sectins.
 
-## Component version bumping
-To bump the version you need to change your package.xml version attribute.
+## Callback
+- place_holder: When a new port is created, this callback is used as a holder. It does not have any functions and it should not be edited or deleted.
 
-You don't need to worry about the 4th digit, as the CI system does the automatic bump of it.
+## Messages
+- movai_msgs:
+  - Any: Ports with this message type can be linked to any other port regardles of their message type (eg: Port to measure frequency of a topic).
+  - Context: Used to send a dictionry of data between two nodes through redis without a link in the flow, similar to the action client-server.
+  - Init: Message type for the movai init port (details below).
+  - Parameter: Used in ports which can get and set parameters in the ROS parameter server.
+  - Reconfigure: Used in ports which can use the ROS reconfigure functionalities.
+  - redis_sub: Used in ports to subscribe to a redis variable or redis key.
+  - TF: Used in the ROS TF subscriber and publisher port (explained below).
+  - Timer: Used in the ROS timer port (explained below).
+  - Transition: Used for transition ports (explained below) in a state node.
+  - Websocket: Used in ports that receive messages through websockets
+
+## Ports
+- AioHTTP:
+  - Websocket: In port, used for websocket messages
+- MovAI:
+  - ContextClient: In and Out port, used on the client node to send commands to and recieve reply from a context server through redis.
+  - ContextServer: In and out port, used on nodes which act as servers to recieve input from context client nodes and reply with a response.
+  - Dependency: In port, used to connect another node with a depends port. Usually used to assert dependency between nodes. Meaning if one node runs, the other one also does.
+  - Depends: Out port, can be used to connect another node with a dependency port. Usually used to assert dependency between nodes. Meaning if one node runs, the other one also does.   
+  - Init: In port, the callback associated with this port runs once the node starts. Like the init method of a class.
+  - TransitionFor: In port, used in state nodes for state transitions. Connecting a link to this port will stop the other node starts this one.
+  - TransitionTo:  Out port, used in state nodes for state transitions. Connecting a link to this port will stop this node and starts the next one.
+- Redis:
+  - Subscriber: In port, port used to subscribe to redis key. The callback is activated when there is a change in the key.
+  - VarSubscriber: In port, port used to subscrive to a redis variable. It's similar to the subscriber above but has a context. You can set these vars in the callback as shown below:
+    - Syntax: ```Var('Context').Function('variable_name', 'variable_value')```
+    - Context:
+      - 'Flow' -> Cleared at the start and end of a flow run.
+      - 'Robot' -> Stays in the robot but cleaned when you re install a robot.
+    - Function:
+      - 'set' -> Set variable value
+      - 'get' -> Get variable value
+      - 'delete' -> Delete variable value
+- ROS1:
+  - ActionClient: In and Out ports, action client port.
+  - ActionServer: In and Out ports, action server port.
+  - NodeletClient: Out port, used to connect to a nodelet server.
+  - NodeletServer: In port, used to connect to a nodelt client.
+  - ParameterServer: Out port, used in nodes to set parameters in the parameter server. Context is set when the protocol is selected in the node template.
+  - PluginClient: Out port, used to connect to a plugin server. Used in nodes such as global_planner to connect to server such as move_base.
+  - PluginServer: In port, used to connect to a plugin client. Used in nodes such as move_base to connect to plugins such as local_planner. 
+  - Publisher: Out port, ros topic publisher.
+  - ReconfigureClient: Out port, used to update the reconfigure parameters by connecting to a reconfigure server.
+  - ReconfigureServer: In port, used in nodes to recieve update requests from the client nodes.
+  - ServiceClient: Out port, service client port.
+  - ServiceServer: In port, service server port.
+  - Subscriber: In port, ros topic subscriber.
+  - TFPublisher: Out port, publsh to a TF tree. The from and to frame ids are set in the node template.
+  - TFSubscriber: In port, subscribe to a specific transform in the TF tree. The from and to frame ids are set in the node template.
+  - Timer: In port, independent port which activates the callback with a frequency. The frequency and the one_shot parameter is set in the node template. The port need not be connected to any other port to function.
+  - TopicHz: In port, used to subscribe to the frequency of a topic. The message associated is Any, so any topic can be linked to this port.
