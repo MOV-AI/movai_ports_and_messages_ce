@@ -51,4 +51,35 @@ sudo apt install ./ros-noetic-movai-ports-and-messages-ce_1.0.0-x_all.deb
   - Transition: Used for transition ports (explained below) in a state node.
   - Websocket: Used in ports that receive messages through websockets
 
-## Ports 
+## Ports
+- AioHTTP:
+  - Websocket: In port used for websocket messages
+- MovAI:
+  - ContextClient: Used on the client node to send commands to and recieve reply from a context server.
+  - ContextServer: Used on nodes which act as servers to recieve input from context client nodes and reply with a response.
+  - Dependency: 
+  - Depends:
+  - Init:
+  - TransitionFor:
+  - TransitionTo:
+- Redis:
+  - Subscriber:
+  - VarSubscriber:
+- ROS1:
+  - ActionClient
+  - ActionServer
+  - NodeletClient
+  - NodeletServer
+  - ParameterServer
+  - PluginClient
+  - PluginServer
+  - Publisher
+  - ReconfigureClient
+  - ReconfigureServer
+  - ServiceClient
+  - ServiceServer
+  - Subscriber
+  - TFPublisher
+  - TFSubscriber
+  - Timer
+  - TopicHz
