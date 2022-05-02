@@ -33,7 +33,7 @@
   <!-- <doc_depend> specify documentation tools which this package needs to generate documentation. -->
   <!-- <doc_depend>package</doc_depend> -->
   <export>
-      <build_version>2</build_version>
+      <build_version>3</build_version>
   </export>
   <!-- TODO: [DP-505] add m-e-t-a-p-a-c-k-a-g-e tag as comment and description of the same. -->
 
