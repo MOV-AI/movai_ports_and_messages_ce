@@ -171,7 +171,11 @@
                     "Transport": "ROS1",
                     "Protocol": "Publisher",
                     "Message": "&",
-                    "LinkEnabled": true
+                    "LinkEnabled": true,
+                    "Parameter": {
+                        "latch": false,
+                        "queue_size": 1
+                    },
                 }
             }
         },
