@@ -1,7 +1,7 @@
 # movai-ports-and-messages-ce
 
 This repository will provide you the following:
-- A set of ports and messages metadata supported on the movai-flow&trade;
+- A set of ports and messages metadata supported on the movai-flow&trade.
 
 ## Release Status
 | Package         | Noetic |
