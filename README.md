@@ -1,7 +1,7 @@
 # movai-ports-and-messages-ce
 
 This repository will provide you the following:
-- A set of ports and messages metadata supported on the movai-flow&trade;
+- A set of ports and messages metadata supported on the movai-flow&trade.
 
 ## Release Status
 | Package         | Noetic |
@@ -49,7 +49,7 @@ sudo apt install ./ros-noetic-movai-ports-and-messages-ce_1.0.0-x_all.deb
   - TF: Used in the ROS TF subscriber and publisher port (explained below).
   - Timer: Used in the ROS timer port (explained below).
   - Transition: Used for transition ports (explained below) in a state node.
-  - Websocket: Used in ports that receive messages through websockets
+  - Websocket: Used in ports that receive messages through websockets.
 
 ## Ports
 - AioHTTP:
