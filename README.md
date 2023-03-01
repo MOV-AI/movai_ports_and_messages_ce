@@ -49,7 +49,7 @@ sudo apt install ./ros-noetic-movai-ports-and-messages-ce_1.0.0-x_all.deb
   - TF: Used in the ROS TF subscriber and publisher port (explained below).
   - Timer: Used in the ROS timer port (explained below).
   - Transition: Used for transition ports (explained below) in a state node.
-  - Websocket: Used in ports that receive messages through websockets
+  - Websocket: Used in ports that receive messages through websockets.
 
 ## Ports
 - AioHTTP:
