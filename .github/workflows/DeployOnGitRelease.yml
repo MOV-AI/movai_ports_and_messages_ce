@@ -9,7 +9,8 @@ jobs:
     with:
       release: 'true'
       ros_distro: '["noetic"]'
-    secrets:
+      prod_publish_repos: '["ppa-public"]'
+  secrets:
       auto_commit_user: ${{ secrets.RAISE_BOT_COMMIT_USER }}
       auto_commit_mail: ${{ secrets.RAISE_BOT_COMMIT_MAIL }}
       registry_user: ${{ secrets.PORTUS_APP_USER }}
